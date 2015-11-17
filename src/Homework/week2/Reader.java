@@ -29,7 +29,7 @@ public class Reader extends LibraryRecord {
         }
     }
 
-    public void showBook(int readerID) {
+    public void showBook() {
 
         for (int i = 0; i < takeBooks.size(); i++) {
             System.out.println(takeBooks.get(i));

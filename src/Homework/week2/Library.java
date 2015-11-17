@@ -70,13 +70,13 @@ public class Library {
 
     public void showAllBookInReaders() {
         for (int i = 0; i < readers.size(); i++) {
-            readers.get(i).showBook(i);
+            readers.get(i).showBook();
         }
     }
 
     public void showAllBookInSomewoneReader(int readerId) {
         Reader foundReader = getReaderByID(readerId);
-        foundReader.showBook(readerId);
+        foundReader.showBook();
     }
 
     public boolean DarkList(int readerId) {
@@ -92,32 +92,39 @@ public class Library {
         }
     }
 
-    private Book getBookByYear(int year) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getYearOfPublishing() > year) {
-                return books.get(i);
+    private ArrayList <Book> getBookByYear(int year) {
+        ArrayList <Book> booksByYear = new ArrayList<>();
+        for (int i = 0; i < this.books.size(); i++) {
+            if (this.books.get(i).getYearOfPublishing() > year) {
+                booksByYear.add(this.books.get(i));
             }
         }
-        return null;
+        return booksByYear;
     }
 
-    private Book getBookByAuthor(String author) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getAuthor().equals(author)) {
-                return books.get(i);
+    private ArrayList <Book> getBookByAuthor(String author) {
+        ArrayList<Book> booksByAuthor = new ArrayList<>();
+        for (int i = 0; i < this.books.size(); i++) {
+            if (this.books.get(i).getAuthor().equals(author)) {
+                booksByAuthor.add(this.books.get(i));
+
             }
         }
-        return null;
+        return booksByAuthor;
     }
 
     public void showAllNewBooks(int year) {
-        Book foundBook = getBookByYear(year);
-        System.out.println(foundBook);
+        ArrayList <Book> bookByYear = getBookByYear(year);
+        for (Book book : bookByYear){
+            System.out.println(book);
+        }
     }
 
     public void showAllBooksThisAuthor(String author) {
-        Book foundBook = getBookByAuthor(author);
-        System.out.println(foundBook);
+        ArrayList<Book> bookByAuthor = getBookByAuthor(author);
+        for (Book book : bookByAuthor){
+            System.out.println(book);
+        }
     }
 }
 
