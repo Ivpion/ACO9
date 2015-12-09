@@ -49,7 +49,7 @@ public class TreeOperations {
 
         int amount = 0;
 
-        while(queue.size() != 0){
+        while(queue.getSize() != 0){
             Node element = (Node) queue.dequeue();// get first element from head
             amount += element.value;
             for(Node child : element.children){

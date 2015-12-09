@@ -1,4 +1,6 @@
-package Homework.week4;
+package Homework.week4.arrayQueue;
+
+import Homework.week4.IQueue;
 
 /**
  * Created by serhii on 29.11.15.
@@ -48,11 +50,11 @@ public class ArrayQueue implements IQueue {
     }
 
     @Override
-    public int size() {
+    public int getSize() {
         return size;
     }
 
-    @Override
+
     public Object[] toArray() {
 
         for (int i = 0; i <mas.length; i++) {

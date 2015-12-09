@@ -9,8 +9,8 @@ public interface IQueue {
 
     Object dequeue();
 
-    int size();
+    int getSize();
 
-    Object[] toArray();
+
 
 }

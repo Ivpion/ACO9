@@ -1,4 +1,4 @@
-package Homework.week4;
+package Homework.week4.arrayQueue;
 
 /**
  * Created by ivan on 04.12.15.
