@@ -26,18 +26,22 @@ public class LinkedQueue  implements IQueuePolutshe {
             head = node;
             tail = node;
         } else {
-
-            tail = node.nextNode;
             tail.nextNode = node;
             tail = node;
         }
-
         count++;
     }
 
     @Override
     public Node dequeue() {
-        return new Node(1);
+        Node buff = head;
+        head = head.nextNode;
+        count--;
+        if (count == 0){
+            head = null;
+            tail = null;
+        }
+        return buff;
     }
 
     @Override
