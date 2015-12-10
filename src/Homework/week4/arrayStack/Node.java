@@ -3,7 +3,11 @@ package Homework.week4.arrayStack;
 /**
  * Created by ivan on 10.12.15.
  */
-public class Node {
+public class Node <I> {
 
-    public int value;
+    public I value;
+
+    public Node(I value) {
+        this.value = value;
+    }
 }

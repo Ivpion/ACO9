@@ -5,11 +5,12 @@ package Homework.week4.arrayStack;
 /**
  * Created by ivan on 10.12.15.
  */
-public interface IStack <T> {
+public interface IStack  {
+    public boolean isSpaceAvailable();
 
-    public void push(T t);
+    public void push(Node node);
 
-    public T pop();
+    public Node pop();
 
     public int getSize();
 

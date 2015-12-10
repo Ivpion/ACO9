@@ -53,7 +53,11 @@ public class LinkedQueueTest {
 
     @Test
     public void testDequeue() throws Exception {
-        linkedQueue.dequeue(); //must throw exception if size = 0;
+        try {
+            linkedQueue.dequeue(); //must throw exception if size = 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         linkedQueue.enqueue(node);
         linkedQueue.enqueue(node1);
