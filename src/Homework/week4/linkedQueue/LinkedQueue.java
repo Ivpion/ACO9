@@ -22,6 +22,7 @@ public class LinkedQueue  implements IQueuePolutshe {
 
     @Override
     public void enqueue(Node node){
+        if (node == null) throw new QueueExeption();
         if (tail == null){
             head = node;
             tail = node;
@@ -34,9 +35,11 @@ public class LinkedQueue  implements IQueuePolutshe {
 
     @Override
     public Node dequeue() {
+        if (head == null) throw new QueueNullPointExeption();
         Node buff = head;
         head = head.nextNode;
         count--;
+
         if (count == 0){
             head = null;
             tail = null;
@@ -49,6 +52,10 @@ public class LinkedQueue  implements IQueuePolutshe {
         return count;
     }
 
-
-
+    @Override
+    public void clearAll() {
+        this.tail = null;
+        this.head = null;
+        this.count = 0;
+    }
 }

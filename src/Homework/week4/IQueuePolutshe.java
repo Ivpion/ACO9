@@ -11,4 +11,6 @@ public interface IQueuePolutshe {
     Node dequeue();
 
     int getSize();
+
+    void clearAll();
 }
