@@ -33,12 +33,14 @@ public class ArrayStack implements IStack {
 
     @Override
     public Node pop() {
-        if (carrentIndex >= 0) {
+        if (carrentIndex >= 1) {
             Node node = nodesMas[carrentIndex - 1];
             carrentIndex--;
 
             return node;
-        } else throw new NullPointerException();
+        } else {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     @Override

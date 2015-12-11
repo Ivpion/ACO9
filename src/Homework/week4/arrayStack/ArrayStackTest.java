@@ -1,11 +1,17 @@
 package Homework.week4.arrayStack;
 
+import org.junit.After;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class ArrayStackTest {
     ArrayStack arrayStack;
+
+    @After
+    public void tearDown() throws Exception {
+        arrayStack = null;
+    }
 
     @Test
     public void testGetSize(){
@@ -39,10 +45,23 @@ public class ArrayStackTest {
         assertEquals(1,arrayStack.getSize());
 
     }
-    @Test (expected = NullPointerException.class)
+    @Test (expected = IndexOutOfBoundsException.class)
     public void testPopException() throws Exception {
+        arrayStack = new ArrayStack();
         arrayStack.pop();
-
     }
 
+    @Test
+    public void testClearStack() throws Exception {
+        arrayStack = new ArrayStack(6);
+        arrayStack.push(new Node(2));
+        arrayStack.push(new Node(4));
+        arrayStack.push(new Node(1));
+        arrayStack.push(new Node(6));
+        arrayStack.push(new Node(10));
+
+        arrayStack.clearStack();
+        assertEquals(0, arrayStack.getSize());
+
+    }
 }
