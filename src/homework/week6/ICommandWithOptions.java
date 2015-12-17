@@ -5,4 +5,5 @@ package homework.week6;
  */
 public interface ICommandWithOptions {
     String execute(char[] options);
+
 }

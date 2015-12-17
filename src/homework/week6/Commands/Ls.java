@@ -24,6 +24,6 @@ public class Ls implements ICommand, ICommandWithOptions{
 
     @Override
     public String execute() {
-        return null;
+        return execute("".toCharArray());
     }
 }
