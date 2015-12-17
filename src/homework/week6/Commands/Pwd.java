@@ -3,7 +3,6 @@ package homework.week6.Commands;
 import homework.week6.ICommand;
 
 import java.io.File;
-import java.util.List;
 
 /**
  * Created by ivan on 16.12.15.
@@ -21,7 +20,9 @@ public class Pwd implements ICommand {
     }
 
     @Override
-    public String execute(List<Character> options) {
+    public String execute() {
         return new File(".").getAbsolutePath();
     }
+
+
 }

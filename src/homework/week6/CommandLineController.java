@@ -6,13 +6,27 @@ import java.io.File;
 public class CommandLineController {
     private File currentDir = new File(".");
     private String userName = System.getProperty("user.name");
+    private SimpleCommandFactory factory = new SimpleCommandFactory();
 
     public String getStartLine() {
         return String.format("[%s - %s]$", userName, currentDir.getAbsolutePath());
     }
 
     public String executeCommand(String command) {
-        if (command.startsWith("pwd")) {
+        String[] parts =  command.split(" ");
+        String cmdName = parts[0];
+        cmdName.toCharArray();
+        try {
+            ICommand commandObject = factory.createCommand(cmdName);
+            return commandObject.execute("".toCharArray());
+
+        } catch (CommandNotFoundException exception){
+            return "command was not recognized";
+        }
+
+
+
+        /*if (command.startsWith("pwd")) {
             return currentDir.getAbsolutePath();
         } else if ("exit".equals(command)) {
             return "exit";
@@ -27,10 +41,10 @@ public class CommandLineController {
                 // absolute
                 currentDir = new File(newPath);
             }
-        }
+        }*/
 
-        return "command was not recognized";
 
     }
+
 
 }

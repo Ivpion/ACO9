@@ -4,8 +4,7 @@ import homework.week6.Commands.Pwd;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
 import static org.junit.Assert.assertEquals;
 /**
@@ -14,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class TestPwd  {
 
     private Pwd command;
-    List<Character> a = new ArrayList<>();
+    char[] a = "".toCharArray();
     @Before
     public void setUp() throws Exception {
         command = new Pwd();
@@ -32,7 +31,10 @@ public class TestPwd  {
 
     @Test
     public void testExecute() throws Exception {
-        assertEquals(null, command.execute(new ArrayList<>()));
+        File current = new File(".");
+        assertEquals(current.getAbsolutePath(), command.execute(a));
 
     }
+
+
 }
