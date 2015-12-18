@@ -11,5 +11,6 @@ public interface ICommand {
     String execute();
     void setOptions(List<String> options);
     void setArguments(List<String> commandArgs);
+    boolean hesHelpOption();
 
 }

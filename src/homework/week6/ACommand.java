@@ -35,4 +35,9 @@ public abstract class ACommand implements ICommand{
     public void setArguments(List<String> commandArgs) {
         this.commandArgs = commandArgs;
     }
+
+    @Override
+    public boolean hesHelpOption(){
+        return this.options.contains("help");
+    }
 }

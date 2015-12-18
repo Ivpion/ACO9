@@ -16,7 +16,9 @@ public class CommandLineController {
     public List<String> findOptions(String[] strgs) {
         List<String> listOptions = new ArrayList<>();
         for (int i = 1; i < strgs.length; i++) {
-            if (strgs[i].startsWith("-")) {
+            if (strgs[i].startsWith("--") && strgs[i].length() > 2){
+                listOptions.add(strgs[i].substring(2));
+            } else if (strgs[i].startsWith("-")) {
                 String[] args = strgs[i].substring(1).split("");
                 for (int j = 0; j < args.length; j++) {
                     listOptions.add(args[j]);
@@ -49,31 +51,14 @@ public class CommandLineController {
 
             commandObject.setArguments(findArgs(parts));
             commandObject.setOptions(findOptions(parts));
+            if (commandObject.hesHelpOption()){
+                return commandObject.help();
+            }
             return commandObject.execute();
 
         } catch (CommandNotFoundException exception) {
             return "command was not recognized";
         }
-
-
-
-        /*if (command.startsWith("pwd")) {
-            return currentDir.getAbsolutePath();
-        } else if ("exit".equals(command)) {
-            return "exit";
-        } else if (command.startsWith("cd")) {
-            String[] commandArgPair = command.split(" ");
-            String newPath = commandArgPair[1];
-
-            if (!newPath.startsWith("/")) {
-                // Relative path
-                currentDir = new File(currentDir, newPath);
-            } else {
-                // absolute
-                currentDir = new File(newPath);
-            }
-        }*/
-
 
     }
 
