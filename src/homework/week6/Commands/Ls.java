@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by ivan on 17.12.15.
  */
-public class Ls extends ACommand{
+public class Ls extends ACommand {
     private List<File> path = new ArrayList<>();
 
     @Override
@@ -26,26 +26,40 @@ public class Ls extends ACommand{
 
     @Override
     public String execute() {
-        // todo
-        // 1. catch nullPointerExc massage "file not found"
-        // 2. do not shows hidden files without "-a" option
-        // 3. show list with "-l" option
 
         String result = "";
         String[] filesList;
         // take current working directory
-        if (commandArgs.size()==0){
+        if (commandArgs.size() == 0) {
             filesList = new File(".").list();
-            for (int i = 0; i < filesList.length ; i++) {
-                result += filesList[i] + " ";
-            }
+            result += getFileListAsString(filesList);
         } else {
-            for (String fileName : commandArgs){
-                filesList = new File(fileName).list();
-                result +="\n" + fileName + ": \n";
-                for (int i = 0; i < filesList.length ; i++) {
-                    result += filesList[i] + " ";
+            try {
+                for (String fileName : commandArgs) {
+                    filesList = new File(fileName).list();
+                    result += "\n" + fileName + ": \n";
+                    result += getFileListAsString(filesList);
                 }
+                return result;
+            } catch (NullPointerException exception) {
+                return "Files not found. Perhaps directory does not exist";
+            }
+
+        }
+        return result;
+    }
+
+    private String getFileListAsString(String[] filesList){
+        String separator = " ";
+        if (this.options.contains("l"))
+            separator = "\n";
+        String result ="";
+        for (int i = 0; i < filesList.length; i++) {
+            if (this.options.contains("a")){
+                result+= filesList[i] + separator;
+            }
+            else {if (!filesList[i].startsWith("."))
+                result += filesList[i] + separator;
             }
         }
         return result;
