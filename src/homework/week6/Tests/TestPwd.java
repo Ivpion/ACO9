@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class TestPwd  {
 
     private Pwd command;
-    char[] a = "".toCharArray();
+
     @Before
     public void setUp() throws Exception {
         command = new Pwd();
@@ -32,7 +32,7 @@ public class TestPwd  {
     @Test
     public void testExecute() throws Exception {
         File current = new File(".");
-        assertEquals(current.getAbsolutePath(), command.execute(a));
+        assertEquals(current.getAbsolutePath(), command.execute());
 
     }
 

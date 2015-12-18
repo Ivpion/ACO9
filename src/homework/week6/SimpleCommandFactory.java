@@ -13,6 +13,8 @@ public class SimpleCommandFactory {
             command = new Pwd();
         }  else if (commandName.equals("ls")){
             command = new Ls();
+        } else if (commandName.equals("exit")){
+            command = new Exit();
         }
         else {
             throw new CommandNotFoundException();
