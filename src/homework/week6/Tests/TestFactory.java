@@ -11,17 +11,16 @@ import static org.junit.Assert.assertTrue;
  * Created by ivan on 17.12.15.
  */
 public class TestFactory {
-    private SimpleCommandFactory factory = new SimpleCommandFactory();
+
 
     @Test
     public void testCreateCommand() throws Exception{
-        assertTrue(factory.createCommand("pwd") instanceof Pwd);
+        assertTrue(SimpleCommandFactory.createCommand("pwd") instanceof Pwd);
     }
 
     @Test(expected = CommandNotFoundException.class)
     public void testCreateCommandException() throws Exception {
-        factory.createCommand("fklhj");
+        SimpleCommandFactory.createCommand("fklhj");
     }
-
 
 }

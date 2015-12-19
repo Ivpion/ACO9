@@ -1,12 +1,15 @@
 package homework.week6.Tests;
 
 import homework.week6.Commands.Pwd;
+import homework.week6.SimpleCommandFactory;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by ivan on 16.12.15.
  */
@@ -35,6 +38,9 @@ public class TestPwd  {
         assertEquals(current.getAbsolutePath(), command.execute());
 
     }
-
+    @Test
+    public void testCreateByFactory() throws Exception {
+        assertTrue(SimpleCommandFactory.createCommand("pwd") instanceof Pwd);
+    }
 
 }

@@ -10,7 +10,6 @@ import java.util.List;
 public class CommandLineController {
     private File currentDir = new File(".");
     private String userName = System.getProperty("user.name");
-    private SimpleCommandFactory factory = new SimpleCommandFactory();
 
 
     public List<String> findOptions(String[] strgs) {
@@ -47,7 +46,7 @@ public class CommandLineController {
         String cmdName = parts[0];
         cmdName.toCharArray();
         try {
-            ICommand commandObject = factory.createCommand(cmdName);
+            ICommand commandObject = SimpleCommandFactory.createCommand(cmdName);
 
             commandObject.setArguments(findArgs(parts));
             commandObject.setOptions(findOptions(parts));

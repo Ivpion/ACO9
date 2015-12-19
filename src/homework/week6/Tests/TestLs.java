@@ -1,6 +1,7 @@
 package homework.week6.Tests;
 
 import homework.week6.Commands.Ls;
+import homework.week6.SimpleCommandFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by ivan on 19.12.15.
  */
@@ -82,5 +85,8 @@ public class TestLs {
                 "FileC.txt ", command.execute());
     }
 
-
+    @Test
+    public void testCreateByFactory() throws Exception {
+        assertTrue(SimpleCommandFactory.createCommand("ls") instanceof Ls);
+    }
 }

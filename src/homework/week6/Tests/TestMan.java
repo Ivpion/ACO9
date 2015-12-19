@@ -2,6 +2,7 @@ package homework.week6.Tests;
 
 import homework.week6.Commands.Man;
 import homework.week6.Commands.Pwd;
+import homework.week6.SimpleCommandFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by ivan on 19.12.15.
  */
@@ -33,21 +36,23 @@ public class TestMan {
         str.add("pwd");
         command.setArguments(str);
         assertEquals(expected, command.execute());
-
     }
 
     @Test
     public void testManExistCommand() throws Exception {
-
         List<String> str = new ArrayList<>();
         str.add("noteexistcommand");
         command.setArguments(str);
-        assertEquals("No manual entry for this command", command.execute());
+        assertEquals(command.NO_MAN_PAGE_TXT, command.execute());
     }
 
     @Test
     public void testManDefault() throws Exception {
-        assertEquals("What manual page do you want?", command.execute());
+        assertEquals(command.WHAT_MAN_YOU_WONT, command.execute());
+    }
 
+    @Test
+    public void testCreateByFactory() throws Exception {
+        assertTrue(SimpleCommandFactory.createCommand("man") instanceof Man);
     }
 }

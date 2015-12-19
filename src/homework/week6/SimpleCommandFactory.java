@@ -7,7 +7,7 @@ import homework.week6.Commands.*;
 public class SimpleCommandFactory {
 
 
-    public ICommand createCommand(String commandName) throws CommandNotFoundException{
+    public static ICommand createCommand(String commandName) throws CommandNotFoundException{
     ICommand command;
         if (commandName.equals("pwd")){
             command = new Pwd();
@@ -15,6 +15,8 @@ public class SimpleCommandFactory {
             command = new Ls();
         } else if (commandName.equals("exit")){
             command = new Exit();
+        } else if (commandName.equals("man")){
+            command = new Man();
         }
         else {
             throw new CommandNotFoundException();
